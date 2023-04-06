@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.demo.MainSceneController">
+   <children>
+
+      <ImageView fitHeight="360.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://i.ibb.co/rfyx9yC/Landing-BG.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="428.0" layoutX="106.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://i.ibb.co/5xM5xPn/Logo.png" />
+         </image>
+      </ImageView>
+      <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="204.0" style="-fx-background-color: transparent; -fx-text-fill: transparent;" text="Button" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <graphic>
+            <ImageView fitHeight="44.0" fitWidth="386.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="https://i.ibb.co/jhMs4Sq/button.png" />
+               </image>
+            </ImageView>
+         </graphic></Button>
+      <Label layoutX="250.0" layoutY="158.0" text="LEARN!">
+         <font>
+            <Font size="29.0" />
+         </font></Label>
+      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
+         <image>
+            <Image url="https://i.ibb.co/YNJw9Hm/Dummy-Avatar.png" />
+         </image>
+      </ImageView>
+
+   </children>
+</AnchorPane>
