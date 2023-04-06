@@ -1,8 +1,13 @@
 package MinecraftMath.demo;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.paint.Paint;
+import javafx.stage.Stage;
 
 public class MainSceneController {
 
@@ -12,12 +17,34 @@ public class MainSceneController {
     @FXML
     private Button submitButton;
     @FXML
+    private Button learnButton;
+
+    @FXML
     private MenuButton answerMenu;
     @FXML
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
+    @FXML
+    private void exitAction(){
+        System.out.println("QUITTT");
+    }
 
+
+    @FXML
+    private void learnAction (ActionEvent event) throws Exception {
+        Stage stage;
+        Parent root;
+
+
+        stage = (Stage) learnButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("Tutorial.fxml"));
+
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
     @FXML
     private void submitAnswer()
     {
