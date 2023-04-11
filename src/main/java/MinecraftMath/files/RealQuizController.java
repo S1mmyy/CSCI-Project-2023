@@ -13,8 +13,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class QuestionPageController {
-    private final int correctAnswer = 30;
+public class RealQuizController {
+    private final int correctAnswer = 49;
     private int submittedAnswer;
 
 
@@ -25,6 +25,10 @@ public class QuestionPageController {
     public Button resetSceneButton;
     @FXML
     private Button submitButton;
+    @FXML
+    private Button landingButton;
+    @FXML
+    private Button resultsButton;
     @FXML
     private Button beginTestButton;
     @FXML
@@ -96,6 +100,30 @@ public class QuestionPageController {
 
         stage = (Stage) beginTestButton.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("RealQuiz.fxml"));
+
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    public void goResults() throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) resultsButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("Results.fxml"));
+
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    @FXML
+    public void goLanding() throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) landingButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
 
         stage.setScene(new Scene(root));
         stage.show();
