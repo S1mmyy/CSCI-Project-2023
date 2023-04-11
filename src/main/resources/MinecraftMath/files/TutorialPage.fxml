@@ -16,11 +16,21 @@
    <ImageView fitHeight="134.0" fitWidth="520.0" layoutX="60.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
       <Image url="https://i.ibb.co/5xM5xPn/Logo.png" />
    </ImageView>
-   <Label layoutX="251.0" layoutY="80.0" prefHeight="34.0" prefWidth="135.0" text="TUTORIAL TIME!">
+   <Label layoutX="251.0" layoutY="80.0" prefHeight="34.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 18;" text="TUTORIAL TIME!">
       <font>
          <Font size="18.0" />
       </font>
    </Label>
    <WebView fx:id="webView" layoutX="196.0" layoutY="116.0" prefHeight="160.0" prefWidth="244.0" />
-   <Button fx:id="endTutButton" layoutX="447.0" layoutY="295.0" mnemonicParsing="false" onAction="#startPractice" text="Go to Practice" />
+   <Button fx:id="endTutButton" layoutX="447.0" layoutY="295.0" mnemonicParsing="false" onAction="#startPractice" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Go to Practice" />
+   <Button layoutY="289.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: transparent;">
+      <graphic>
+         <ImageView fitHeight="93.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+            <Image url="https://i.ibb.co/0GLYj6r/image-2023-04-06-153852580.png" />
+         </ImageView>
+      </graphic>
+   </Button>
+   <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
+      <Image url="https://i.ibb.co/YNJw9Hm/Dummy-Avatar.png" />
+   </ImageView>
 </AnchorPane>

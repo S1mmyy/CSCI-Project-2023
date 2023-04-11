@@ -20,5 +20,15 @@
             <Font size="18.0" />
         </font>
     </Label>
-    <Button fx:id="landingButton" layoutX="420.0" layoutY="295.0" mnemonicParsing="false" onAction="#goLanding" text="Go to Landing Page" />
+    <Button fx:id="landingButton" layoutX="420.0" layoutY="295.0" mnemonicParsing="false" onAction="#goLanding" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Go to Landing Page" />
+    <Button layoutY="289.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: transparent;">
+        <graphic>
+            <ImageView fitHeight="93.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+                <Image url="https://i.ibb.co/0GLYj6r/image-2023-04-06-153852580.png" />
+            </ImageView>
+        </graphic>
+    </Button>
+    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
+        <Image url="https://i.ibb.co/YNJw9Hm/Dummy-Avatar.png" />
+    </ImageView>
 </AnchorPane>
