@@ -6,7 +6,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Paint;
+import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 public class MainSceneController {
@@ -27,7 +31,7 @@ public class MainSceneController {
     private Label resultLabel;
     @FXML
     private void exitAction(){
-        System.out.println("QUITTT");
+        System.exit(1);
     }
 
 
@@ -41,8 +45,18 @@ public class MainSceneController {
         root = FXMLLoader.load(getClass().getResource("Tutorial.fxml"));
 
 
-        Scene scene = new Scene(root);
-        stage.setScene(scene);
+
+        WebView webView = new WebView();
+        webView.getEngine().load("https://www.youtube.com/embed/8cz_IB65pZM");
+
+        AnchorPane anchorPane = (AnchorPane) root.lookup("#anchorPane");
+        anchorPane.getChildren().add(webView);
+        AnchorPane.setTopAnchor(webView, 110.0);
+        AnchorPane.setRightAnchor(webView, 200.0);
+        AnchorPane.setLeftAnchor(webView, 190.0);
+        AnchorPane.setBottomAnchor(webView, 80.0);
+
+        stage.setScene(new Scene(root));
         stage.show();
     }
     @FXML
