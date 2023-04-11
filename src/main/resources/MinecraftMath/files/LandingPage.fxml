@@ -6,7 +6,7 @@
 <?import javafx.scene.text.*?>
 
 <AnchorPane prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.MainSceneController">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.LandingPageController">
 
    <ImageView fitHeight="360.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
       <Image url="https://i.ibb.co/rfyx9yC/Landing-BG.png"/>
