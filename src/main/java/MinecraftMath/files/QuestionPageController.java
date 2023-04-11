@@ -8,7 +8,7 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.paint.Paint;
 
 public class QuestionPageController {
-    private final int correctAnswer = 4;
+    private final int correctAnswer = 30;
     private int submittedAnswer;
 
     public Button resetSceneButton;
