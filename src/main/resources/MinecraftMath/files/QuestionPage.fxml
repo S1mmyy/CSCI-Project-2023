@@ -30,4 +30,8 @@
         </items>
     </MenuButton>
     <Button fx:id="resetSceneButton" layoutX="417.0" layoutY="215.0" mnemonicParsing="false" onAction="#resetScene" text="Reset" />
+   <Label fx:id="resultLabel" layoutX="213.0" layoutY="232.0">
+      <font>
+         <Font size="18.0" />
+      </font></Label>
 </AnchorPane>
