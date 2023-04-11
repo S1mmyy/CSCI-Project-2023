@@ -1,4 +1,4 @@
-package MinecraftMath.demo;
+package MinecraftMath.files;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;

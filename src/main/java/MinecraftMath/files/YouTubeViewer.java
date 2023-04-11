@@ -1,4 +1,4 @@
-package MinecraftMath.demo;
+package MinecraftMath.files;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
@@ -18,10 +18,9 @@ import javafx.stage.Stage;
 public class YouTubeViewer extends Application {
     public static void main(String[] args) { launch(args); }
 
-    @Override public void start(Stage stage) throws Exception {
+    @Override public void start(Stage stage) {
         WebView webview = new WebView();
         webview.getEngine().load(
-
                 "https://www.youtube.com/embed/TMubSggUOVE" //be sure to get the YouTube embed URL
         );
         webview.setPrefSize(640, 390);

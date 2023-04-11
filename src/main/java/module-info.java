@@ -3,6 +3,6 @@ module com.example.demo {
     requires javafx.fxml;
     requires javafx.web;
 
-    opens MinecraftMath.demo to javafx.fxml;
-    exports MinecraftMath.demo;
+    opens MinecraftMath.files to javafx.fxml;
+    exports MinecraftMath.files;
 }
