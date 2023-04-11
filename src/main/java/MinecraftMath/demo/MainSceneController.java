@@ -26,11 +26,11 @@ public class MainSceneController {
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
+
     @FXML
     private void exitAction(){
         System.exit(1);
     }
-
 
     @FXML
     private void learnAction () throws Exception {
@@ -38,7 +38,7 @@ public class MainSceneController {
         Parent root;
 
         stage = (Stage) learnButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("Tutorial.fxml"));
+        root = FXMLLoader.load(getClass().getResource("TutorialPage.fxml"));
 
         WebView webView = new WebView();
         webView.getEngine().load("https://www.youtube.com/embed/8cz_IB65pZM");
