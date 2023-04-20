@@ -1,25 +1,28 @@
 package MinecraftMath.files;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class TutorialPageController {
-    public WebView webView;
-    public AnchorPane anchorPane;
-    public Button endTutButton;
+public class TutorialPageController implements Initializable {
     @FXML
-    private void exitAction(){
-        System.exit(1);
+    public WebView youtubeEmbedView;
+    public Button endTutButton;
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        youtubeEmbedView.getEngine().load("https://www.youtube.com/embed/8cz_IB65pZM");
     }
+
     public void startPractice() throws IOException {
         Stage stage;
         Parent root;
@@ -29,5 +32,10 @@ public class TutorialPageController {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void exitAction(){
+        System.exit(1);
     }
 }

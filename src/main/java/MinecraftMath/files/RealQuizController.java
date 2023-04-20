@@ -17,20 +17,12 @@ public class RealQuizController {
     private final int correctAnswer = 49;
     private int submittedAnswer;
 
-
-    @FXML
-    private void exitAction(){
-        System.exit(1);
-    }
-    public Button resetSceneButton;
     @FXML
     private Button submitButton;
     @FXML
     private Button landingButton;
     @FXML
     private Button resultsButton;
-    @FXML
-    private Button beginTestButton;
     @FXML
     private MenuButton answerMenu;
     @FXML
@@ -46,14 +38,6 @@ public class RealQuizController {
             correctAnswerGiven();
         else
             incorrectAnswerGiven();
-    }
-    @FXML
-    private void resetScene()
-    {
-        submitButton.setDisable(true);
-        answerMenu.setDisable(false);
-        answerMenu.setText("Select answer");
-        resultLabel.setText("");
     }
     @FXML
     private void selectAnswer1()
@@ -93,17 +77,6 @@ public class RealQuizController {
         resultLabel.setText("Incorrect.");
         resultLabel.setTextFill(Paint.valueOf("red"));
     }
-    @FXML
-    public void beginTest() throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) beginTestButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("RealQuiz.fxml"));
-
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
 
     @FXML
     public void goResults() throws IOException {
@@ -127,5 +100,10 @@ public class RealQuizController {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void exitAction(){
+        System.exit(1);
     }
 }

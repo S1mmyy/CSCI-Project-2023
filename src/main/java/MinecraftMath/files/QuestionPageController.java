@@ -17,11 +17,7 @@ public class QuestionPageController {
     private final int correctAnswer = 30;
     private int submittedAnswer;
 
-
     @FXML
-    private void exitAction(){
-        System.exit(1);
-    }
     public Button resetSceneButton;
     @FXML
     private Button submitButton;
@@ -99,5 +95,10 @@ public class QuestionPageController {
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    @FXML
+    private void exitAction(){
+        System.exit(1);
     }
 }
