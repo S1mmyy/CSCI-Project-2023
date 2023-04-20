@@ -5,15 +5,15 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.RealQuizController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.RealQuizController">
     <ImageView fitHeight="360.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="https://i.ibb.co/ccX3bgS/Dirt-Background.png" />
+        <Image url="@../assets/Dirt-Background.png" />
     </ImageView>
     <ImageView fitHeight="252.0" fitWidth="466.0" layoutX="86.0" layoutY="80.0" pickOnBounds="true">
-        <Image url="https://i.ibb.co/rbwSmP7/Question-BG.png" />
+        <Image url="@../assets/Question-BG.png" />
     </ImageView>
     <ImageView fitHeight="134.0" fitWidth="520.0" layoutX="60.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
-        <Image url="https://i.ibb.co/5xM5xPn/Logo.png" />
+        <Image url="@../assets/Logo.png" />
     </ImageView>
     <Label layoutX="251.0" layoutY="80.0" prefHeight="58.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 30;" text="Results">
         <font>
@@ -24,11 +24,11 @@
     <Button layoutY="289.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: transparent;">
         <graphic>
             <ImageView fitHeight="93.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
-                <Image url="https://i.ibb.co/0GLYj6r/image-2023-04-06-153852580.png" />
+                <Image url="@../assets/exit-icon.png" />
             </ImageView>
         </graphic>
     </Button>
     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
-        <Image url="https://i.ibb.co/YNJw9Hm/Dummy-Avatar.png" />
+        <Image url="@../assets/Dummy-Avatar.png" />
     </ImageView>
 </AnchorPane>
