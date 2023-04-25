@@ -3,32 +3,35 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="360.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.RealQuizController">
-    <ImageView fitHeight="360.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
+<AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.RealQuizController">
+    <ImageView fitHeight="576.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../assets/Dirt-Background.png" />
     </ImageView>
-    <ImageView fitHeight="252.0" fitWidth="466.0" layoutX="86.0" layoutY="80.0" pickOnBounds="true">
-        <Image url="@../assets/Question-BG.png" />
-    </ImageView>
-    <ImageView fitHeight="134.0" fitWidth="520.0" layoutX="60.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
+    <ImageView fitWidth="700.0" layoutX="161.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../assets/Logo.png" />
     </ImageView>
-    <Label layoutX="251.0" layoutY="80.0" prefHeight="58.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 30;" text="Results">
-        <font>
-            <Font size="18.0" />
-        </font>
-    </Label>
-    <Button fx:id="landingButton" layoutX="420.0" layoutY="295.0" mnemonicParsing="false" onAction="#goLanding" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Go to Landing Page" />
-    <Button layoutY="289.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: transparent;">
+
+    <AnchorPane layoutX="122.0" layoutY="88.0" prefHeight="400.0" prefWidth="720.0">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ece9d8" height="400.0" stroke="TRANSPARENT" strokeType="INSIDE" strokeWidth="0.0" width="740.0" />
+        <Label layoutX="251.0" layoutY="80.0" prefHeight="58.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 30;" text="Results">
+            <font>
+                <Font size="18.0" />
+            </font>
+        </Label>
+        <Button fx:id="landingButton" layoutX="420.0" layoutY="295.0" mnemonicParsing="false" onAction="#goLanding" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Go to Landing Page" />
+    </AnchorPane>
+
+    <ImageView fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
+        <Image url="@../assets/Dummy-Avatar.png" />
+    </ImageView>
+    <Button layoutY="466.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
         <graphic>
-            <ImageView fitHeight="93.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">
                 <Image url="@../assets/exit-icon.png" />
             </ImageView>
         </graphic>
     </Button>
-    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
-        <Image url="@../assets/Dummy-Avatar.png" />
-    </ImageView>
 </AnchorPane>
