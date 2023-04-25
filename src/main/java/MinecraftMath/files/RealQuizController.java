@@ -12,9 +12,10 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Random;
 
 public class RealQuizController {
-    private final int correctAnswer = 49;
+    private int correctAnswer = 49;
     private int submittedAnswer;
 
 
@@ -48,7 +49,7 @@ public class RealQuizController {
             incorrectAnswerGiven();
     }
     @FXML
-    private void resetScene()
+    private void resetScene() // Remove this method entirely, we don't need to reset the question attempts if the user is taking a test.
     {
         submitButton.setDisable(true);
         answerMenu.setDisable(false);
@@ -116,6 +117,40 @@ public class RealQuizController {
         stage.setScene(new Scene(root));
         stage.show();
     }
+
+
+
+
+    @FXML
+    private Label questionBox;
+    @FXML
+    public void generateQuestion(){
+        Arithmetic arm = new Arithmetic('4');
+        questionBox.setText(arm.getQuestion());
+        correctAnswer = arm.getAnswer();
+        Random rightAns = new Random();
+
+        option1.setText("1");
+        option2.setText("2");
+        option3.setText("3");
+        option4.setText("4");
+
+        switch(rightAns.nextInt(4)) {
+            case 0:
+                option1.setText(String.valueOf(arm.getAnswer()));
+                break;
+            case 1:
+                option2.setText(String.valueOf(arm.getAnswer()));
+                break;
+            case 2:
+                option3.setText(String.valueOf(arm.getAnswer()));
+                break;
+            case 3:
+                option4.setText(String.valueOf(arm.getAnswer()));
+                break;
+        }
+    }
+
 
     @FXML
     public void goLanding() throws IOException {

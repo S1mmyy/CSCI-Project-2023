@@ -9,17 +9,17 @@
             xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.LandingPageController">
 
    <ImageView fitHeight="360.0" fitWidth="640.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/Landing-BG.png" />
+      <Image url="https://i.ibb.co/rfyx9yC/Landing-BG.png" />
    </ImageView>
 
    <ImageView fitHeight="113.0" fitWidth="428.0" layoutX="106.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/Logo.png" />
+      <Image url="https://i.ibb.co/5xM5xPn/Logo.png" />
    </ImageView>
 
    <Button fx:id="learnButton" alignment="CENTER" contentDisplay="CENTER" layoutX="178.0" layoutY="140.0" mnemonicParsing="false" onAction="#learnAction" style="-fx-background-color: transparent; -fx-font-family: Minecraft; -fx-font-size: 30;" text="LEARN!" textAlignment="CENTER">
       <graphic>
          <ImageView fitHeight="44.0" fitWidth="386.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assets/button.png" />
+            <Image url="https://i.ibb.co/jhMs4Sq/button.png" />
          </ImageView>
       </graphic>
       <font>
@@ -28,13 +28,13 @@
    </Button>
 
    <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
-      <Image url="@../assets/Dummy-Avatar.png" />
+      <Image url="https://i.ibb.co/YNJw9Hm/Dummy-Avatar.png" />
    </ImageView>
 
    <Button layoutY="289.0" mnemonicParsing="false" onAction="#exitAction" style="-fx-background-color: transparent;">
       <graphic>
          <ImageView fitHeight="93.0" fitWidth="62.0" pickOnBounds="true" preserveRatio="true">
-            <Image url="@../assets/exit-icon.png" />
+            <Image url="https://i.ibb.co/0GLYj6r/image-2023-04-06-153852580.png" />
          </ImageView>
       </graphic>
    </Button>

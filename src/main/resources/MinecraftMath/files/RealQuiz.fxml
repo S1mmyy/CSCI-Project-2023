@@ -15,7 +15,7 @@
     <ImageView fitHeight="134.0" fitWidth="520.0" layoutX="60.0" layoutY="-26.0" pickOnBounds="true" preserveRatio="true">
         <Image url="@../assets/Logo.png" />
     </ImageView>
-    <Label layoutX="87.0" layoutY="174.0" prefHeight="130.0" prefWidth="330.0" style="-fx-font-family: Minecraft; -fx-font-size: 20;" text="Steve has a grid of iron&#10;that is 7 by 7 blocks. How &#10;many blocks does he have&#10;in total?">
+    <Label fx:id="questionBox" layoutX="87.0" layoutY="174.0" prefHeight="130.0" prefWidth="330.0" style="-fx-font-family: Minecraft; -fx-font-size: 20;" text="Steve has a grid of iron&#10;that is 7 by 7 blocks. How &#10;many blocks does he have&#10;in total?">
         <font>
             <Font name="Rockwell" size="20.0" />
         </font>
@@ -45,4 +45,5 @@
     <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
         <Image url="@../assets/Dummy-Avatar.png" />
     </ImageView>
+   <Button fx:id="questionGenerator" layoutX="257.0" layoutY="109.0" mnemonicParsing="false" onAction="#generateQuestion" text="Button" />
 </AnchorPane>
