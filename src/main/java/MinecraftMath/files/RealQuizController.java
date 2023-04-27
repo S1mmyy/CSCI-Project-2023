@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.util.Random;
 
-public class RealQuizController {
+public class RealQuizController extends MasterController {
     private int correctAnswer = 49;
     private int submittedAnswer;
 
@@ -105,36 +105,11 @@ public class RealQuizController {
         option3.setText("3");
         option4.setText("4");
 
-        switch(rightAns.nextInt(4)) {
-            case 0:
-                option1.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 1:
-                option2.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 2:
-                option3.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 3:
-                option4.setText(String.valueOf(arm.getAnswer()));
-                break;
+        switch (rightAns.nextInt(4)) {
+            case 0 -> option1.setText(String.valueOf(arm.getAnswer()));
+            case 1 -> option2.setText(String.valueOf(arm.getAnswer()));
+            case 2 -> option3.setText(String.valueOf(arm.getAnswer()));
+            case 3 -> option4.setText(String.valueOf(arm.getAnswer()));
         }
-    }
-
-    @FXML
-    public void goLanding() throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) landingButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
-
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    @FXML
-    private void exitAction(){
-        System.exit(1);
     }
 }

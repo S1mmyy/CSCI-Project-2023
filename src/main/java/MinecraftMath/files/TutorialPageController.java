@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class TutorialPageController implements Initializable {
+public class TutorialPageController extends MasterController implements Initializable {
     @FXML
     public WebView youtubeEmbedView;
     public Button endTutButton;
@@ -32,10 +32,5 @@ public class TutorialPageController implements Initializable {
 
         stage.setScene(new Scene(root));
         stage.show();
-    }
-
-    @FXML
-    private void exitAction(){
-        System.exit(1);
     }
 }

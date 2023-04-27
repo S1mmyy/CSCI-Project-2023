@@ -13,7 +13,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class QuestionPageController {
+public class QuestionPageController extends MasterController {
     private final int correctAnswer = 30;
     private int submittedAnswer;
 
@@ -95,10 +95,5 @@ public class QuestionPageController {
 
         stage.setScene(new Scene(root));
         stage.show();
-    }
-
-    @FXML
-    private void exitAction(){
-        System.exit(1);
     }
 }
