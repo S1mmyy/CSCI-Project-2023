@@ -36,6 +36,7 @@
             </font></Label>
         <Button fx:id="resultsButton" layoutX="372.0" layoutY="246.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="Go to results" />
         <Label layoutX="91.0" layoutY="109.0" prefHeight="58.0" prefWidth="179.0" style="-fx-font-family: Minecraft; -fx-font-size: 28;" text="Unit Test" textAlignment="CENTER" />
+      <Label layoutX="256.0" layoutY="24.0" text="Go to the question class and change wether the questionType is 'mc' or 'tf'" />
     </AnchorPane>
 
     <ImageView fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
@@ -48,5 +49,5 @@
             </ImageView>
         </graphic>
     </Button>
-   <Button fx:id="questionGenerator" layoutX="257.0" layoutY="109.0" mnemonicParsing="false" onAction="#generateQuestion" text="Button" />
+   <Button fx:id="questionGenerator" layoutX="257.0" layoutY="109.0" mnemonicParsing="false" onAction="#generateQuestion" text="DEBUG random" />
 </AnchorPane>
