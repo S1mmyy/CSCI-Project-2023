@@ -6,19 +6,28 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Stage;
+import org.json.JSONObject;
+import org.json.JSONTokener;
 
-import org.json.*;
 import java.io.InputStream;
 
 public class TitlePageController extends MasterController {
     @FXML
+    public Button testLoginButton;
+
+    @FXML
     private void loginWithTestUser() {
+        setTestUserData();
+        loadUserDataOntoScene();
+        landingButton.setDisable(false);
+    }
+
+    public void setTestUserData() {
         InputStream inStream = getClass().getResourceAsStream("/MinecraftMath/assets/testuser.json");
         JSONTokener tokener = new JSONTokener(inStream);
         JSONObject userJSON = new JSONObject(tokener);
 
-        currUser = new User(userJSON.getString("name"), userJSON.getInt("grade"), userJSON.getInt("avatarNum"));
-        currUser.printUser();
+        userHolder.setUser(new User(userJSON.getString("name"), userJSON.getInt("grade"), userJSON.getInt("avatarNum")));
     }
 
     @FXML

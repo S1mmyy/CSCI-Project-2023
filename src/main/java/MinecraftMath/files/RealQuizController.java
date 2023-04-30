@@ -12,16 +12,22 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
 public class RealQuizController extends MasterController {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUserDataOntoScene();
+    }
+
     private int correctAnswer = 49;
     private int submittedAnswer;
 
     @FXML
     private Button submitButton;
-    @FXML
-    private Button landingButton;
     @FXML
     private Button resultsButton;
     @FXML
@@ -30,6 +36,8 @@ public class RealQuizController extends MasterController {
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
+    @FXML
+    public Button questionGenerator;
 
     @FXML
     private void submitAnswer()

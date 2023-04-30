@@ -7,7 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.net.URL;
+import java.util.ResourceBundle;
+
 public class LandingPageController extends MasterController {
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUserDataOntoScene();
+    }
 
     @FXML
     private Button learnButton;
