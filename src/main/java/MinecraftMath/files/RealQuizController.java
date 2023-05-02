@@ -34,11 +34,23 @@ public class RealQuizController {
     @FXML
     private void submitAnswer()
     {
-        submittedAnswer = Integer.parseInt(answerMenu.getText());
-        if (submittedAnswer == correctAnswer)
-            correctAnswerGiven();
-        else
-            incorrectAnswerGiven();
+        Question question = new Question();
+
+        if(question.getQuestionType().equals("tf")){
+            if(question.getIsTrue().equals("True") && answerMenu.getText().equals("True") || question.getIsTrue().equals("False") && answerMenu.getText().equals("False")){
+                correctAnswerGiven();
+            }else{
+                incorrectAnswerGiven();
+
+            }
+        }else{
+            submittedAnswer = Integer.parseInt(answerMenu.getText());
+            if (submittedAnswer == correctAnswer)
+                correctAnswerGiven();
+            else
+                incorrectAnswerGiven();
+        }
+
     }
     @FXML
     private void selectAnswer1()
@@ -77,6 +89,7 @@ public class RealQuizController {
     {
         resultLabel.setText("Incorrect.");
         resultLabel.setTextFill(Paint.valueOf("red"));
+        answerMenu.setDisable(true);
     }
 
     @FXML
@@ -96,6 +109,10 @@ public class RealQuizController {
     @FXML
     public void generateQuestion(){
         Arithmetic arm = new Arithmetic('4');
+        resultLabel.setText("");
+        answerMenu.setDisable(false);
+        answerMenu.setText("Select answer");
+
         questionBox.setText(arm.getQuestion());
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();
@@ -105,20 +122,33 @@ public class RealQuizController {
         option3.setText("3");
         option4.setText("4");
 
-        switch(rightAns.nextInt(4)) {
-            case 0:
-                option1.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 1:
-                option2.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 2:
-                option3.setText(String.valueOf(arm.getAnswer()));
-                break;
-            case 3:
-                option4.setText(String.valueOf(arm.getAnswer()));
-                break;
+        if(arm.getQuestionType().equals("mc")){
+            option3.setVisible(true);
+            option4.setVisible(true);
+            switch(rightAns.nextInt(4)) {
+                case 0:
+                    option1.setText(String.valueOf(arm.getAnswer()));
+                    break;
+                case 1:
+                    option2.setText(String.valueOf(arm.getAnswer()));
+                    break;
+                case 2:
+                    option3.setText(String.valueOf(arm.getAnswer()));
+                    break;
+                case 3:
+                    option4.setText(String.valueOf(arm.getAnswer()));
+                    break;
+            }
+        }else{
+            option3.setVisible(false);
+            option4.setVisible(false);
+
+            option1.setText("True");
+            option2.setText("False");
+
+
         }
+
     }
 
     @FXML

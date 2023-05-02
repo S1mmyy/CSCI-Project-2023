@@ -30,6 +30,7 @@ public class Arithmetic extends Question{
             a = ran.nextInt(21);
             b = ran.nextInt(21);
             operation = ops[0];
+
         }
 
         else if(grade == '1' || grade=='2')
@@ -106,14 +107,30 @@ public class Arithmetic extends Question{
 
     public String getQuestion()
     {
-        String question = "What is " + a + " " + operation + " " + b + " equal to?";
-       // System.out.println(question);
+        String question = "ERROR DETECTED! Contact admin.";
+        if(questionType.equals("mc")){
+            question = "What is " + a + " " + operation + " " + b + " equal to?";
+
+
+        }
+        if (questionType.equals("tf")){
+            if(ran.nextInt(2) == 1) {
+                question = "Is " + a + " " + operation + " " + b +" = "+ answer +" ?";
+                isTrue = "True";
+
+            }else {
+                int incorr = b+1;
+                question = "Is " + a + " " + operation + " " + incorr + " = " + answer + " ?";
+                isTrue = "False";
+            }
+
+        }
         return question;
     }
 
     public int getAnswer()
     {
-        if(questionType == "mc"){
+        if(questionType.equals("mc")){
             return answer;
         }else{
 
@@ -121,10 +138,27 @@ public class Arithmetic extends Question{
         return answer;
     }
 
-    public int[] getWrongAnswers(){
+    public void setAnswer(int a){
 
-
-        return new int[0];
+        answer = a;
     }
+
+    public char getOperation(){
+        return operation;
+    }
+
+    public int getFirstNum(){
+
+
+        return a;
+    }
+    public int getSecondNum(){
+
+
+        return b;
+    }
+
+
+
 
 }
