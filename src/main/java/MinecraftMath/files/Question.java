@@ -7,7 +7,7 @@ public class Question {
 
 
     //Possible values, "mc" for Multiple Choice.   "tf" for True or False.
-    static String questionType = "tf";
+    static String questionType = "mc";
 
     static String isTrue = "True";
 

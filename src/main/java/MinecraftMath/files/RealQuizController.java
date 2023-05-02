@@ -21,6 +21,8 @@ public class RealQuizController {
     @FXML
     private Button submitButton;
     @FXML
+    private Button questionGenerator;
+    @FXML
     private Button landingButton;
     @FXML
     private Button resultsButton;
@@ -36,6 +38,7 @@ public class RealQuizController {
     {
         Question question = new Question();
 
+        //TRUE OR FALSE QUESTION CHECKER
         if(question.getQuestionType().equals("tf")){
             if(question.getIsTrue().equals("True") && answerMenu.getText().equals("True") || question.getIsTrue().equals("False") && answerMenu.getText().equals("False")){
                 correctAnswerGiven();
@@ -43,6 +46,7 @@ public class RealQuizController {
                 incorrectAnswerGiven();
 
             }
+        //MULTIPLE CHOICE QUESTION CHECKER
         }else{
             submittedAnswer = Integer.parseInt(answerMenu.getText());
             if (submittedAnswer == correctAnswer)
@@ -50,6 +54,9 @@ public class RealQuizController {
             else
                 incorrectAnswerGiven();
         }
+
+        submitButton.setDisable(true);
+        questionGenerator.setDisable(false);
 
     }
     @FXML
@@ -110,7 +117,9 @@ public class RealQuizController {
     public void generateQuestion(){
         Arithmetic arm = new Arithmetic('4');
         resultLabel.setText("");
+        questionGenerator.setDisable(true);
         answerMenu.setDisable(false);
+        submitButton.setDisable(true);
         answerMenu.setText("Select answer");
 
         questionBox.setText(arm.getQuestion());
@@ -118,9 +127,9 @@ public class RealQuizController {
         Random rightAns = new Random();
 
         option1.setText(String.valueOf((arm.getAnswer()-1)));
-        option2.setText(String.valueOf((arm.getAnswer()-2)));
-        option3.setText(String.valueOf((arm.getAnswer()-2)));
-        option4.setText(String.valueOf((arm.getAnswer()-1)));
+        option2.setText(String.valueOf((arm.getAnswer()+1)));
+        option3.setText(String.valueOf((arm.getAnswer()+2)));
+        option4.setText(String.valueOf((arm.getAnswer()-2)));
 
         if(arm.getQuestionType().equals("mc")){
             option3.setVisible(true);

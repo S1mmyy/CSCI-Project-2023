@@ -21,8 +21,8 @@
                 <Font name="Rockwell" size="20.0" />
             </font>
         </Label>
-        <Button fx:id="submitButton" disable="true" layoutX="388.0" layoutY="174.0" mnemonicParsing="false" onAction="#submitAnswer" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Submit" />
-        <MenuButton fx:id="answerMenu" layoutX="388.0" layoutY="140.0" minWidth="104.0" mnemonicParsing="false" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Select answer">
+        <Button fx:id="submitButton" disable="true" layoutX="459.0" layoutY="187.0" mnemonicParsing="false" onAction="#submitAnswer" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Submit" />
+        <MenuButton fx:id="answerMenu" layoutX="434.0" layoutY="138.0" minWidth="104.0" mnemonicParsing="false" style="-fx-font-family: Minecraft; -fx-font-size: 12;" text="Select answer">
             <items>
                 <MenuItem fx:id="option1" mnemonicParsing="false" onAction="#selectAnswer1" style="-fx-font-family: Minecraft;" text="40" />
                 <MenuItem fx:id="option2" mnemonicParsing="false" onAction="#selectAnswer2" style="-fx-font-family: Minecraft;" text="49" />
@@ -34,9 +34,13 @@
             <font>
                 <Font size="29.0" />
             </font></Label>
-        <Button fx:id="resultsButton" layoutX="372.0" layoutY="246.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="Go to results" />
+        <Button fx:id="resultsButton" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="Go to results" />
         <Label layoutX="91.0" layoutY="109.0" prefHeight="58.0" prefWidth="179.0" style="-fx-font-family: Minecraft; -fx-font-size: 28;" text="Unit Test" textAlignment="CENTER" />
-      <Label layoutX="256.0" layoutY="24.0" text="Go to the question class and change wether the questionType is 'mc' or 'tf'" />
+      <Label layoutX="256.0" layoutY="24.0" text="Go to the question class and change wether the questionType is 'mc' or 'tf'" underline="true">
+         <font>
+            <Font size="14.0" />
+         </font></Label>
+      <Button fx:id="questionGenerator" disable="true" layoutX="606.0" layoutY="343.0" mnemonicParsing="false" onAction="#generateQuestion" prefHeight="43.0" prefWidth="120.0" text="Next Question" />
     </AnchorPane>
 
     <ImageView fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
@@ -49,5 +53,4 @@
             </ImageView>
         </graphic>
     </Button>
-   <Button fx:id="questionGenerator" layoutX="257.0" layoutY="109.0" mnemonicParsing="false" onAction="#generateQuestion" text="DEBUG random" />
 </AnchorPane>
