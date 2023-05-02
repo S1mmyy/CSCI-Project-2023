@@ -117,10 +117,10 @@ public class RealQuizController {
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();
 
-        option1.setText("1");
-        option2.setText("2");
-        option3.setText("3");
-        option4.setText("4");
+        option1.setText(String.valueOf((arm.getAnswer()-1)));
+        option2.setText(String.valueOf((arm.getAnswer()-2)));
+        option3.setText(String.valueOf((arm.getAnswer()-2)));
+        option4.setText(String.valueOf((arm.getAnswer()-1)));
 
         if(arm.getQuestionType().equals("mc")){
             option3.setVisible(true);
