@@ -29,6 +29,8 @@ public class RealQuizController extends MasterController {
     @FXML
     private Button submitButton;
     @FXML
+    private Button questionGenerator;
+    @FXML
     private Button resultsButton;
     @FXML
     private MenuButton answerMenu;
@@ -36,14 +38,13 @@ public class RealQuizController extends MasterController {
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
-    @FXML
-    public Button questionGenerator;
 
     @FXML
     private void submitAnswer()
     {
         Question question = new Question();
 
+        //TRUE OR FALSE QUESTION CHECKER
         if(question.getQuestionType().equals("tf")){
             if(question.getIsTrue().equals("True") && answerMenu.getText().equals("True") || question.getIsTrue().equals("False") && answerMenu.getText().equals("False")){
                 correctAnswerGiven();
@@ -51,6 +52,7 @@ public class RealQuizController extends MasterController {
                 incorrectAnswerGiven();
 
             }
+        //MULTIPLE CHOICE QUESTION CHECKER
         }else{
             submittedAnswer = Integer.parseInt(answerMenu.getText());
             if (submittedAnswer == correctAnswer)
@@ -58,6 +60,9 @@ public class RealQuizController extends MasterController {
             else
                 incorrectAnswerGiven();
         }
+
+        submitButton.setDisable(true);
+        questionGenerator.setDisable(false);
 
     }
     @FXML
@@ -118,17 +123,19 @@ public class RealQuizController extends MasterController {
     public void generateQuestion(){
         Arithmetic arm = new Arithmetic('4');
         resultLabel.setText("");
+        questionGenerator.setDisable(true);
         answerMenu.setDisable(false);
+        submitButton.setDisable(true);
         answerMenu.setText("Select answer");
 
         questionBox.setText(arm.getQuestion());
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();
 
-        option1.setText("1");
-        option2.setText("2");
-        option3.setText("3");
-        option4.setText("4");
+        option1.setText(String.valueOf((arm.getAnswer()-1)));
+        option2.setText(String.valueOf((arm.getAnswer()+1)));
+        option3.setText(String.valueOf((arm.getAnswer()+2)));
+        option4.setText(String.valueOf((arm.getAnswer()-2)));
 
         switch (rightAns.nextInt(4)) {
             case 0 -> option1.setText(String.valueOf(arm.getAnswer()));
