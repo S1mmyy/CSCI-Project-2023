@@ -39,9 +39,9 @@
       <Label layoutX="256.0" layoutY="24.0" text="Go to the question class and change wether the questionType is 'mc' or 'tf'" />
     </AnchorPane>
 
-    <ImageView fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0">
-        <Image url="@../assets/Dummy-Avatar.png" />
-    </ImageView>
+    <ImageView fx:id="avatarLoc" fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0" />
+    <Label fx:id="usernameLabel" alignment="CENTER" layoutX="902.0" layoutY="355.0" prefHeight="25.0" prefWidth="116.0" style="-fx-font-family: Minecraft; -fx-font-size: 20;" textFill="WHITE" />
+
     <Button layoutY="466.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
         <graphic>
             <ImageView fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true">

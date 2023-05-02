@@ -12,8 +12,10 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
-public class QuestionPageController {
+public class QuestionPageController extends MasterController {
     private final int correctAnswer = 30;
     private int submittedAnswer;
 
@@ -97,8 +99,8 @@ public class QuestionPageController {
         stage.show();
     }
 
-    @FXML
-    private void exitAction(){
-        System.exit(1);
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUserDataOntoScene();
     }
 }

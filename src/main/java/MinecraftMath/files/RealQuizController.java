@@ -12,16 +12,22 @@ import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.net.URL;
 import java.util.Random;
+import java.util.ResourceBundle;
 
-public class RealQuizController {
+public class RealQuizController extends MasterController {
+
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadUserDataOntoScene();
+    }
+
     private int correctAnswer = 49;
     private int submittedAnswer;
 
     @FXML
     private Button submitButton;
-    @FXML
-    private Button landingButton;
     @FXML
     private Button resultsButton;
     @FXML
@@ -30,6 +36,8 @@ public class RealQuizController {
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
+    @FXML
+    public Button questionGenerator;
 
     @FXML
     private void submitAnswer()
@@ -122,49 +130,12 @@ public class RealQuizController {
         option3.setText("3");
         option4.setText("4");
 
-        if(arm.getQuestionType().equals("mc")){
-            option3.setVisible(true);
-            option4.setVisible(true);
-            switch(rightAns.nextInt(4)) {
-                case 0:
-                    option1.setText(String.valueOf(arm.getAnswer()));
-                    break;
-                case 1:
-                    option2.setText(String.valueOf(arm.getAnswer()));
-                    break;
-                case 2:
-                    option3.setText(String.valueOf(arm.getAnswer()));
-                    break;
-                case 3:
-                    option4.setText(String.valueOf(arm.getAnswer()));
-                    break;
-            }
-        }else{
-            option3.setVisible(false);
-            option4.setVisible(false);
-
-            option1.setText("True");
-            option2.setText("False");
-
-
+        switch (rightAns.nextInt(4)) {
+            case 0 -> option1.setText(String.valueOf(arm.getAnswer()));
+            case 1 -> option2.setText(String.valueOf(arm.getAnswer()));
+            case 2 -> option3.setText(String.valueOf(arm.getAnswer()));
+            case 3 -> option4.setText(String.valueOf(arm.getAnswer()));
         }
 
-    }
-
-    @FXML
-    public void goLanding() throws IOException {
-        Stage stage;
-        Parent root;
-
-        stage = (Stage) landingButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
-
-        stage.setScene(new Scene(root));
-        stage.show();
-    }
-
-    @FXML
-    private void exitAction(){
-        System.exit(1);
     }
 }
