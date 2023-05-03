@@ -1,25 +1,30 @@
 package MinecraftMath.files;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import org.json.JSONObject;
 import org.json.JSONTokener;
 
 import java.io.InputStream;
 
-public class TitlePageController extends MasterController {
+public class LoginPageController extends MasterController {
     @FXML
-    public Button testLoginButton;
+    private Button loginButton;
+    @FXML
+    private Label loginMessageLabel;
 
     @FXML
     private void loginWithTestUser() {
         setTestUserData();
         loadUserDataOntoScene();
-        landingButton.setDisable(false);
+        loginMessageLabel.setText("Welcome " + userHolder.getUser().getName() + "!");
+        loginButton.setDisable(false);
     }
 
     public void setTestUserData() {
@@ -31,17 +36,21 @@ public class TitlePageController extends MasterController {
     }
 
     @FXML
-    private Button landingButton;
+    private void attemptLogin() throws Exception {
+        successfulLogin();
+    }
 
-    @FXML
-    private void landingAction() throws Exception {
+    private void successfulLogin() throws Exception {
         Stage stage;
         Parent root;
 
-        stage = (Stage) landingButton.getScene().getWindow();
+        stage = (Stage) loginButton.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
 
         stage.setScene(new Scene(root));
         stage.show();
+    }
+
+    public void goRegister(ActionEvent actionEvent) {
     }
 }

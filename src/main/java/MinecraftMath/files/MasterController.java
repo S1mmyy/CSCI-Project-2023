@@ -16,9 +16,9 @@ public class MasterController implements Initializable {
     private final String urlStub = "/MinecraftMath/assets/avatars/";
 
     @FXML
-    ImageView avatarLoc;
+    protected ImageView avatarLoc;
     @FXML
-    Label usernameLabel;
+    protected Label usernameLabel;
 
     public MasterController() {
         avatarList.add(new Image(getClass().getResource(urlStub + "Steve.png").toString()));

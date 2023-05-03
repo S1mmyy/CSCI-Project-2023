@@ -14,8 +14,9 @@ import java.util.ResourceBundle;
 
 public class TutorialPageController extends MasterController {
     @FXML
-    public WebView youtubeEmbedView;
-    public Button endTutButton;
+    private WebView youtubeEmbedView;
+    @FXML
+    private Button endTutButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {

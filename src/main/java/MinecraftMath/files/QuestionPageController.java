@@ -20,11 +20,7 @@ public class QuestionPageController extends MasterController {
     private int submittedAnswer;
 
     @FXML
-    public Button resetSceneButton;
-    @FXML
-    private Button submitButton;
-    @FXML
-    private Button beginTestButton;
+    private Button resetSceneButton, submitButton, beginTestButton;
     @FXML
     private MenuButton answerMenu;
     @FXML
