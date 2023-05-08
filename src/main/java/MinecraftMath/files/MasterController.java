@@ -17,6 +17,7 @@ public class MasterController implements Initializable {
 
     DatabaseConnection connectNow = new DatabaseConnection();
     Connection connectDB = connectNow.getConnection();
+    Statement statement;
 
     @FXML
     protected ImageView avatarLoc;

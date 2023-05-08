@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 import java.sql.*;
 
 public class LoginPageController extends MasterController {
@@ -30,7 +32,7 @@ public class LoginPageController extends MasterController {
 
     private void validateLogin() throws SQLException {
         String loginQuery = "SELECT count(1) FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
-        Statement statement = connectDB.createStatement();
+        statement = connectDB.createStatement();
         ResultSet results = statement.executeQuery(loginQuery);
 
         while (results.next()) {
@@ -45,7 +47,7 @@ public class LoginPageController extends MasterController {
 
     private void successfulLogin() throws SQLException {
         String userDataQuery = "SELECT name, grade, avatar_num FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
-        Statement statement = connectDB.createStatement();
+        statement = connectDB.createStatement();
         ResultSet results = statement.executeQuery(userDataQuery);
         results.next();
 
@@ -67,6 +69,15 @@ public class LoginPageController extends MasterController {
         stage.show();
     }
 
-    public void goRegister() {
+    @FXML
+    public void goRegister() throws IOException {
+        Stage stage;
+        Parent root;
+
+        stage = (Stage) registerButton.getScene().getWindow();
+        root = FXMLLoader.load(getClass().getResource("RegisterPage.fxml"));
+
+        stage.setScene(new Scene(root));
+        stage.show();
     }
 }
