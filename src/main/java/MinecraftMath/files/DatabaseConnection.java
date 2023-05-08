@@ -17,7 +17,7 @@ public class DatabaseConnection {
             File txtFile = new File((fileUrl.getPath()));
             Scanner sc = new Scanner(txtFile);
 
-            databaseLink = DriverManager.getConnection("jdbc:mysql://localhost:3306/mc_math", "root", sc.next());
+            databaseLink = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com:3306/sql9616894", "sql9616894", sc.next());
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             e.getCause();
