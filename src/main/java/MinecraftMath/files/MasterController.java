@@ -8,19 +8,23 @@ import javafx.scene.image.ImageView;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import java.sql.*;
 
 // Controller for methods that all/multiple scenes will have access to
 public class MasterController implements Initializable {
     public UserHolder userHolder = UserHolder.getInstance();
     public ArrayList<Image> avatarList = new ArrayList<>() {};
-    private final String urlStub = "/MinecraftMath/assets/avatars/";
+
+    DatabaseConnection connectNow = new DatabaseConnection();
+    Connection connectDB = connectNow.getConnection();
 
     @FXML
     protected ImageView avatarLoc;
     @FXML
-    protected Label usernameLabel;
+    protected Label nameLabel;
 
     public MasterController() {
+        String urlStub = "/MinecraftMath/assets/avatars/";
         avatarList.add(new Image(getClass().getResource(urlStub + "Steve.png").toString()));
         avatarList.add(new Image(getClass().getResource(urlStub + "Alex.png").toString()));
         avatarList.add(new Image(getClass().getResource(urlStub + "Pig.png").toString()));
@@ -33,7 +37,7 @@ public class MasterController implements Initializable {
     public void loadUserDataOntoScene() {
         User currUser = userHolder.getUser();
         avatarLoc.setImage(avatarList.get(currUser.getAvatarNum()));
-        usernameLabel.setText(currUser.getName());
+        nameLabel.setText(currUser.getName());
     }
 
     @FXML

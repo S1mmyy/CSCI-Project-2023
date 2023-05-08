@@ -1,46 +1,62 @@
 package MinecraftMath.files;
 
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
-import org.json.JSONObject;
-import org.json.JSONTokener;
-
-import java.io.InputStream;
+import java.sql.*;
 
 public class LoginPageController extends MasterController {
     @FXML
-    private Button loginButton;
+    private TextField nameField, passwordField;
+    @FXML
+    private Button loginButton, landingButton, registerButton;
     @FXML
     private Label loginMessageLabel;
 
     @FXML
-    private void loginWithTestUser() {
-        setTestUserData();
-        loadUserDataOntoScene();
-        loginMessageLabel.setText("Welcome " + userHolder.getUser().getName() + "!");
-        loginButton.setDisable(false);
+    private void attemptLogin() throws Exception {
+        if (!nameField.getText().isBlank() && !passwordField.getText().isBlank()) {
+            validateLogin();
+        }
+        else {
+            loginMessageLabel.setText("Enter a username and password");
+        }
     }
 
-    public void setTestUserData() {
-        InputStream inStream = getClass().getResourceAsStream("/MinecraftMath/assets/testuser.json");
-        JSONTokener tokener = new JSONTokener(inStream);
-        JSONObject userJSON = new JSONObject(tokener);
+    private void validateLogin() throws SQLException {
+        String loginQuery = "SELECT count(1) FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
+        Statement statement = connectDB.createStatement();
+        ResultSet results = statement.executeQuery(loginQuery);
 
-        userHolder.setUser(new User(userJSON.getString("name"), userJSON.getInt("grade"), userJSON.getInt("avatarNum")));
+        while (results.next()) {
+            if (results.getInt(1) == 1) {
+                successfulLogin();
+            }
+            else {
+                loginMessageLabel.setText("Invalid login");
+            }
+        }
+    }
+
+    private void successfulLogin() throws SQLException {
+        String userDataQuery = "SELECT name, grade, avatar_num FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
+        Statement statement = connectDB.createStatement();
+        ResultSet results = statement.executeQuery(userDataQuery);
+        results.next();
+
+        userHolder.setUser(new User(results.getString(1), results.getInt(2), results.getInt(3)));
+        loadUserDataOntoScene();
+        loginMessageLabel.setText("Welcome " + userHolder.getUser().getName() + "!");
+        landingButton.setVisible(true);
     }
 
     @FXML
-    private void attemptLogin() throws Exception {
-        successfulLogin();
-    }
-
-    private void successfulLogin() throws Exception {
+    private void goLanding() throws Exception {
         Stage stage;
         Parent root;
 
@@ -51,6 +67,6 @@ public class LoginPageController extends MasterController {
         stage.show();
     }
 
-    public void goRegister(ActionEvent actionEvent) {
+    public void goRegister() {
     }
 }

@@ -4,7 +4,6 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
 
 <AnchorPane prefHeight="576.0" prefWidth="1024.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="MinecraftMath.files.LandingPageController">
    <ImageView fitHeight="576.0" fitWidth="1024.0" pickOnBounds="true" preserveRatio="true">
@@ -24,10 +23,9 @@
          <Insets top="0.0" />
       </padding>
    </Button>
-   <Rectangle arcWidth="5.0" height="25.0" layoutX="902.0" layoutY="358.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="116.0" />
 
    <ImageView fx:id="avatarLoc" fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0" />
-   <Label fx:id="usernameLabel" alignment="CENTER" layoutX="902.0" layoutY="355.0" prefHeight="25.0" prefWidth="116.0" style="-fx-font-family: Minecraft; -fx-font-size: 20;" textFill="WHITE" />
+   <Label fx:id="nameLabel" alignment="CENTER" layoutX="902.0" layoutY="355.0" prefHeight="25.0" prefWidth="116.0" style="-fx-font-family: Minecraft; -fx-font-size: 20;" textFill="WHITE" />
 
    <Button layoutY="466.0" mnemonicParsing="false" onAction="#exitAction" prefHeight="100.0" prefWidth="100.0" style="-fx-background-color: transparent;">
       <graphic>
