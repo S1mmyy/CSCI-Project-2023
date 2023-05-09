@@ -54,10 +54,10 @@
          </items>
       </ComboBox>
 
-      <Button fx:id="backToLoginButton" layoutX="242.0" layoutY="248.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="40.0" prefWidth="125.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Go Back" />
-      <Button fx:id="registerButton" layoutX="373.0" layoutY="248.0" mnemonicParsing="false" onAction="#attemptRegister" prefHeight="40.0" prefWidth="125.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Create User" />
+      <Button fx:id="backToLoginButton" layoutX="243.0" layoutY="236.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="40.0" prefWidth="125.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Go Back" />
+      <Button fx:id="registerButton" layoutX="374.0" layoutY="236.0" mnemonicParsing="false" onAction="#attemptRegister" prefHeight="40.0" prefWidth="125.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Create User" />
 
-      <Button fx:id="landingButton" layoutX="290.0" layoutY="294.0" mnemonicParsing="false" onAction="#goLogin" prefHeight="40.0" prefWidth="160.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Continue" visible="false" />
+      <Button fx:id="landingButton" layoutX="291.0" layoutY="282.0" mnemonicParsing="false" onAction="#goLanding" prefHeight="40.0" prefWidth="160.0" style="-fx-font-family: Minecraft; -fx-font-size: 16" text="Continue" visible="false" />
       <Label fx:id="loginMessageLabel" alignment="CENTER" layoutX="209.0" layoutY="339.0" prefHeight="30.0" prefWidth="323.0" style="-fx-font-family: Minecraft; -fx-font-size: 18;" />
    </AnchorPane>
 
