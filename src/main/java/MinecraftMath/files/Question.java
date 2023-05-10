@@ -6,8 +6,8 @@ public class Question {
     static int difficultyLevel = 0;
 
 
-    //Possible values, "mc" for Multiple Choice.   "tf" for True or False.
-    static String questionType = "mc";
+    //Possible values, "true" for Multiple Choice.   "false" for True or False.
+    static boolean isMultipleChoice = true;
 
     static String isTrue = "True";
 
@@ -16,9 +16,9 @@ public class Question {
     }
     static String answer;
 
-    public String getQuestionType(){
+    public boolean getIsMultipleChoice(){
 
-        return questionType;
+        return isMultipleChoice;
     }
     public Question() {
 

@@ -24,6 +24,7 @@ public class ResultsController extends MasterController {
         Stage stage;
         Parent root;
 
+
         stage = (Stage) landingButton.getScene().getWindow();
         root = FXMLLoader.load(getClass().getResource("LandingPage.fxml"));
 
