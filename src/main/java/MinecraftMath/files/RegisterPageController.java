@@ -80,7 +80,7 @@ public class RegisterPageController extends MasterController {
         String lastName = lastNameField.getText().substring(0,1).toUpperCase() + lastNameField.getText().substring(1);
         int grade = gradeSelect.getSelectionModel().getSelectedIndex();
         int avatarNum = avatarSelect.getSelectionModel().getSelectedIndex();
-        return new User(firstName+lastName, grade, avatarNum, 1, 0);
+        return new User(firstName+lastName, grade, avatarNum, 1, new double[5]);
     }
 
     @FXML

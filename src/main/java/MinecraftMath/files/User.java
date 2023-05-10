@@ -3,14 +3,14 @@ package MinecraftMath.files;
 public class User {
     private String name;
     private int grade, avatarNum, questionSet;
-    private double gradeScore;
+    private double[] gradeScores;
 
-    public User(String newName, int newGrade, int newAvatarNum, int newQuestionSet, double newGradeScore) {
+    public User(String newName, int newGrade, int newAvatarNum, int newQuestionSet, double[] newGradeScores) {
         name = newName;
         grade = newGrade;
         avatarNum = newAvatarNum;
         questionSet = newQuestionSet;
-        gradeScore = newGradeScore;
+        gradeScores = newGradeScores;
     }
 
     public String getName() {
@@ -37,11 +37,11 @@ public class User {
     public int getQuestionSet() { return questionSet; }
     public void setQuestionSet(int questionSet) { this.questionSet = questionSet; }
 
-    public double getGradeScore() {
-        return gradeScore;
+    public double[] getGradeScore() {
+        return gradeScores;
     }
-    public void setGradeScore(int gradeScore) {
-        this.gradeScore = gradeScore;
+    public void setGradeScore(double[] gradeScores) {
+        this.gradeScores = gradeScores;
     }
 
     public void incQuestionSet() {
