@@ -30,8 +30,6 @@ public class LoginPageController extends MasterController {
         }
     }
 
-
-
     private void validateLogin() throws SQLException {
         String loginQuery = "SELECT count(1) FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
         statement = connectDB.createStatement();
@@ -48,12 +46,12 @@ public class LoginPageController extends MasterController {
     }
 
     private void successfulLogin() throws SQLException {
-        String userDataQuery = "SELECT name, grade, avatar_num FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
+        String userDataQuery = "SELECT name, grade, avatar_num, question_set, grade_score FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
         statement = connectDB.createStatement();
         ResultSet results = statement.executeQuery(userDataQuery);
         results.next();
 
-        userHolder.setUser(new User(results.getString(1), results.getInt(2), results.getInt(3)));
+        userHolder.setUser(new User(results.getString(1), results.getInt(2), results.getInt(3), results.getInt(4), results.getDouble(5)));
         loadUserDataOntoScene();
         loginMessageLabel.setText("Welcome " + userHolder.getUser().getName() + "!");
         landingButton.setVisible(true);
