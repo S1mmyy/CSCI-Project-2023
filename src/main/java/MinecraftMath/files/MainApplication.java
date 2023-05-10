@@ -15,6 +15,7 @@ public class MainApplication extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(MainApplication.class.getResource("LoginPage.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         stage.setTitle("Minecraft Math!");
+        stage.setResizable(false);
         Font.loadFont(MainApplication.class.getResource("MinecraftFont.otf").toExternalForm(), 10);
 
         stage.setScene(scene);
