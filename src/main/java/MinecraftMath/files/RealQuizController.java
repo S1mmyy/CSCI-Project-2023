@@ -125,7 +125,7 @@ public class RealQuizController extends MasterController {
 
     @FXML
     public void goResults() throws IOException, SQLException {
-        System.out.println(sectionPoints); //MODIFY CODE TO INCLUDE THIS INTO THE DATABASE
+        System.out.println(sectionPoints);
 
         String updateUserSet = "UPDATE user_account SET question_set = " + (userHolder.getUser().getQuestionSet() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         String updateUserGrade = "UPDATE user_account SET grade = " + (userHolder.getUser().getGrade() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
