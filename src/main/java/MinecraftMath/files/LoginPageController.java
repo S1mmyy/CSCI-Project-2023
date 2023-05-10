@@ -46,7 +46,7 @@ public class LoginPageController extends MasterController {
     }
 
     private void successfulLogin() throws SQLException {
-        String userDataQuery = "SELECT name, grade, avatar_num, question_set, grade_score FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
+        String userDataQuery = "SELECT name, grade, avatar_num, question_set, grade_score_k, grade_score_1, grade_score_2, grade_score_3, grade_score_4 FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
         statement = connectDB.createStatement();
         ResultSet results = statement.executeQuery(userDataQuery);
         results.next();
