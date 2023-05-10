@@ -116,10 +116,10 @@ public class Arithmetic extends Question{
                     question = "What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 2:
-                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    question = "2What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 3:
-                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    question = "3What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -133,10 +133,10 @@ public class Arithmetic extends Question{
                     question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
                     break;
                 case 2:
-                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    question = "2Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
                     break;
                 case 3:
-                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    question = "3Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -149,7 +149,7 @@ public class Arithmetic extends Question{
                     question = "What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 2:
-                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    question = "2What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 3:
                     if(isMultipleChoice){

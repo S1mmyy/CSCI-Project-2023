@@ -15,6 +15,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.sql.SQLException;
 import java.util.Random;
 import java.util.ResourceBundle;
 
@@ -26,7 +27,7 @@ public class RealQuizController extends MasterController {
         questionList = 0;
         try {
             generateQuestion();
-        } catch (IOException e) {
+        } catch (IOException | SQLException e) {
             throw new RuntimeException(e);
         }
     }
@@ -34,7 +35,7 @@ public class RealQuizController extends MasterController {
     private int correctAnswer = 49;
     private int submittedAnswer;
 
-    private int sectionPoints = 0;
+    private double sectionPoints = 0.0;
 
     @FXML
     private Button submitButton;
@@ -123,8 +124,42 @@ public class RealQuizController extends MasterController {
     }
 
     @FXML
-    public void goResults() throws IOException {
+    public void goResults() throws IOException, SQLException {
         System.out.println(sectionPoints); //MODIFY CODE TO INCLUDE THIS INTO THE DATABASE
+
+        String updateUserSet = "UPDATE user_account SET question_set = " + (userHolder.getUser().getQuestionSet() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        String updateUserGrade = "UPDATE user_account SET grade = " + (userHolder.getUser().getGrade() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        String resetUserSet = "UPDATE user_account SET question_set = " + 1 + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        String userGradeCap = "UPDATE user_account SET grade = " + 5 + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        String updateUserScore = "";
+
+        if(userHolder.getUser().getGrade() == 0){
+            updateUserScore = "UPDATE user_account SET grade_score_k = " + (Math.round((sectionPoints/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        }else{
+            updateUserScore = "UPDATE user_account SET grade_score_"+userHolder.getUser().getGrade()+" = " + (Math.round((sectionPoints/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+        }
+
+
+        statement = connectDB.createStatement();
+        statement.executeUpdate(updateUserSet);
+
+        statement.executeUpdate(updateUserScore);
+
+
+        userHolder.getUser().incQuestionSet();
+
+        if(userHolder.getUser().getQuestionSet() > 3){
+            statement.executeUpdate(updateUserGrade);
+            userHolder.getUser().resetQuestionSet();
+            statement.executeUpdate(resetUserSet);
+            userHolder.getUser().incUserGrade();
+            if(userHolder.getUser().getGrade() > 4){
+                //IMPLEMENT CONGRATS SCREEN  and  MINIGAME
+                userHolder.getUser().setGrade(5);
+                statement.executeUpdate(userGradeCap);
+            }
+        }
+
         Stage stage;
         Parent root;
 
@@ -138,12 +173,13 @@ public class RealQuizController extends MasterController {
     @FXML
     private Label questionBox;
     @FXML
-    public void generateQuestion() throws IOException {
-        gradeDisplay.setText("Grade "+userHolder.getUser().getGrade()+" Section IMPLEMENT GET SECTION");
+    public void generateQuestion() throws IOException, SQLException {
+        gradeDisplay.setText("Grade "+userHolder.getUser().getGrade()+" Section "+userHolder.getUser().getQuestionSet());
         Arithmetic arm = new Arithmetic(userHolder.getUser().getGrade());
         questionList++;
         questionListCount.setText(questionList + " out of 10");
         if(questionList > 10){
+
             goResults();
 
             //INCREASE USER QUESTION SET PER GRADE, OR INCREASE GRADE LEVEL IF QUESTION SET IS HIGHER THAN 3
@@ -154,7 +190,8 @@ public class RealQuizController extends MasterController {
         submitButton.setDisable(true);
         answerMenu.setText("Select answer");
 
-        questionBox.setText(arm.getQuestion(userHolder.getUser().getGrade(),2));
+        questionBox.setText(arm.getQuestion(userHolder.getUser().getGrade(),userHolder.getUser().getQuestionSet()));
+        System.out.println("QUESTION SET "+userHolder.getUser().getQuestionSet());
         //RENAME QUESTION SET TO BE ACTUAL VALUE
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();

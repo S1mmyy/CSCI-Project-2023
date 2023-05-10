@@ -43,4 +43,16 @@ public class User {
     public void setGradeScore(int gradeScore) {
         this.gradeScore = gradeScore;
     }
+
+    public void incQuestionSet() {
+        questionSet++;
+    }
+
+    public void incUserGrade() {
+        grade++;
+    }
+
+    public void resetQuestionSet() {
+        questionSet=1;
+    }
 }
