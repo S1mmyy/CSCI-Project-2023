@@ -8,6 +8,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuButton;
 import javafx.scene.control.MenuItem;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.paint.Paint;
 import javafx.stage.Stage;
 
@@ -21,13 +23,25 @@ public class RealQuizController extends MasterController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadUserDataOntoScene();
+        questionList = 0;
+        try {
+            generateQuestion();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
-
+    private int questionList = 1;
     private int correctAnswer = 49;
     private int submittedAnswer;
 
+    private int sectionPoints = 0;
+
     @FXML
     private Button submitButton;
+    @FXML
+    private Label questionListCount;
+    @FXML
+    private Label gradeDisplay;
     @FXML
     private Button questionGenerator;
     @FXML
@@ -38,6 +52,8 @@ public class RealQuizController extends MasterController {
     private MenuItem option1, option2, option3, option4;
     @FXML
     private Label resultLabel;
+    @FXML
+    private ImageView questionVisual;
 
     @FXML
     private void submitAnswer()
@@ -45,7 +61,7 @@ public class RealQuizController extends MasterController {
         Question question = new Question();
 
         //TRUE OR FALSE QUESTION CHECKER
-        if(question.getQuestionType().equals("tf")){
+        if(!question.isMultipleChoice){
             if(question.getIsTrue().equals("True") && answerMenu.getText().equals("True") || question.getIsTrue().equals("False") && answerMenu.getText().equals("False")){
                 correctAnswerGiven();
             }else{
@@ -96,6 +112,7 @@ public class RealQuizController extends MasterController {
         resultLabel.setText("Correct!");
         resultLabel.setTextFill(Paint.valueOf("green"));
         answerMenu.setDisable(true);
+        sectionPoints += 10;
     }
     @FXML
     private void incorrectAnswerGiven()
@@ -107,6 +124,7 @@ public class RealQuizController extends MasterController {
 
     @FXML
     public void goResults() throws IOException {
+        System.out.println(sectionPoints); //MODIFY CODE TO INCLUDE THIS INTO THE DATABASE
         Stage stage;
         Parent root;
 
@@ -120,15 +138,24 @@ public class RealQuizController extends MasterController {
     @FXML
     private Label questionBox;
     @FXML
-    public void generateQuestion(){
-        Arithmetic arm = new Arithmetic('4');
+    public void generateQuestion() throws IOException {
+        gradeDisplay.setText("Grade "+userHolder.getUser().getGrade()+" Section IMPLEMENT GET SECTION");
+        Arithmetic arm = new Arithmetic(userHolder.getUser().getGrade());
+        questionList++;
+        questionListCount.setText(questionList + " out of 10");
+        if(questionList > 10){
+            goResults();
+
+            //INCREASE USER QUESTION SET PER GRADE, OR INCREASE GRADE LEVEL IF QUESTION SET IS HIGHER THAN 3
+        }
         resultLabel.setText("");
         questionGenerator.setDisable(true);
         answerMenu.setDisable(false);
         submitButton.setDisable(true);
         answerMenu.setText("Select answer");
 
-        questionBox.setText(arm.getQuestion());
+        questionBox.setText(arm.getQuestion(userHolder.getUser().getGrade(),2));
+        //RENAME QUESTION SET TO BE ACTUAL VALUE
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();
 
@@ -143,6 +170,14 @@ public class RealQuizController extends MasterController {
             case 2 -> option3.setText(String.valueOf(arm.getAnswer()));
             case 3 -> option4.setText(String.valueOf(arm.getAnswer()));
         }
+
+
+
+    }
+    @FXML
+    public void setVisual(Image image){
+
+        questionVisual.setImage(image);
 
     }
 }

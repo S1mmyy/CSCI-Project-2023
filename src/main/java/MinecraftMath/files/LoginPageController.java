@@ -30,6 +30,8 @@ public class LoginPageController extends MasterController {
         }
     }
 
+
+
     private void validateLogin() throws SQLException {
         String loginQuery = "SELECT count(1) FROM user_account WHERE name = '" + nameField.getText() + "' AND password = '" + passwordField.getText() + "'";
         statement = connectDB.createStatement();

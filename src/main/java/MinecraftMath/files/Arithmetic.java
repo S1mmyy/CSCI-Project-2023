@@ -10,6 +10,7 @@ import java.util.Scanner;
 public class Arithmetic extends Question{
 
     static int a,b;
+
     static char operation;
     static int answer;
     static Random ran = new Random();
@@ -22,10 +23,10 @@ public class Arithmetic extends Question{
 
     static int p,q;
 
-    public Arithmetic(char grade)
+    public Arithmetic(int grade)
     {
 
-        if(grade=='k')
+        if(grade==0)
         {
             a = ran.nextInt(21);
             b = ran.nextInt(21);
@@ -33,21 +34,21 @@ public class Arithmetic extends Question{
 
         }
 
-        else if(grade == '1' || grade=='2')
+        else if(grade == 1 || grade==2)
         {
-            a= ran.nextInt(101);
-            b= ran.nextInt(101);
-            operation = ops[ran.nextInt(2)];
+            a= ran.nextInt(21);
+            b= ran.nextInt(21);
+            operation = ops[2];
         }
 
-        else if(grade=='3')
+        else if(grade==3)
         {
             a=ran.nextInt(5001);
             b=ran.nextInt(5001);
             operation = ops[ran.nextInt(3)];
         }
 
-        else if(grade=='4')
+        else if(grade==4)
         {
             p = ran.nextInt(202);
             q = ran.nextInt(12);
@@ -57,7 +58,7 @@ public class Arithmetic extends Question{
         }
 
 
-        actualOp= operation;
+        actualOp = operation;
 
         if(actualOp == '+') {
 
@@ -105,32 +106,80 @@ public class Arithmetic extends Question{
     }*/
 
 
-    public String getQuestion()
+    public String getQuestion(int grade, int questionSet)
     {
+
         String question = "ERROR DETECTED! Contact admin.";
-        if(questionType.equals("mc")){
-            question = "What is " + a + " " + operation + " " + b + " equal to?";
-
-
-        }
-        if (questionType.equals("tf")){
-            if(ran.nextInt(2) == 1) {
-                question = "Is " + a + " " + operation + " " + b +" = "+ answer +" ?";
-                isTrue = "True";
-
-            }else {
-                int incorr = b+1;
-                question = "Is " + a + " " + operation + " " + incorr + " = " + answer + " ?";
-                isTrue = "False";
+        if(grade == 0 || grade == 1){
+            switch (questionSet) {
+                case 1:
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    break;
+                case 2:
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    break;
+                case 3:
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    break;
+                default:
+                    System.out.println("Invalid choice");
             }
 
         }
+        if(grade == 2 || grade == 3){
+
+            switch (questionSet) {
+                case 1:
+                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    break;
+                case 2:
+                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    break;
+                case 3:
+                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }
+        if(grade == 4){
+
+            switch (questionSet) {
+                case 1:
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    break;
+                case 2:
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    break;
+                case 3:
+                    if(isMultipleChoice){
+                        question = "What is " + a + " " + operation + " " + b + " equal to?";
+                    }
+                    if (!isMultipleChoice){
+                        if(ran.nextInt(2) == 1) {
+                            question = "Is " + a + " " + operation + " " + b +" = "+ answer +" ?";
+                            isTrue = "True";
+
+                        }else {
+                            int incorr = b+1;
+                            question = "Is " + a + " " + operation + " " + incorr + " = " + answer + " ?";
+                            isTrue = "False";
+                        }
+                    }
+                    break;
+                default:
+                    System.out.println("Invalid choice");
+            }
+
+
+        }
+
         return question;
     }
 
     public int getAnswer()
     {
-        if(questionType.equals("mc")){
+        if(isMultipleChoice){
             return answer;
         }else{
 
