@@ -20,8 +20,40 @@ public class TutorialPageController extends MasterController {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        youtubeEmbedView.getEngine().load("https://www.youtube.com/embed/8cz_IB65pZM");
         loadUserDataOntoScene();
+        loadYouTubeEmbed();
+    }
+
+    // Determines which youtube video to load depending on the progress the student has made
+    private void loadYouTubeEmbed() {
+        String videoEmbedCode = "";
+        int userGrade = userHolder.getUser().getGrade();
+        int userCurrSet = userHolder.getUser().getQuestionSet();
+        switch (userGrade) {
+            case 0, 1: {
+                switch (userCurrSet) {
+                    case 1 -> videoEmbedCode = "zU5LwvJJt5Y";
+                    case 2 -> videoEmbedCode = "zJyT6MIlkAw";
+                    case 3 -> videoEmbedCode = "wH6JiePHdwA";
+                }
+            }
+            case 2, 3: {
+                switch (userCurrSet) {
+                    case 1 -> videoEmbedCode = "cE-yrJv4TEs";
+                    case 2 -> videoEmbedCode = "i31rRt5m1-4";
+                    case 3 -> videoEmbedCode = "10dTx1Zy_4w";
+                }
+            }
+            case 4: {
+                switch (userCurrSet) {
+                    case 1 -> videoEmbedCode = "dATl8pFPDbw";
+                    case 2 -> videoEmbedCode = "oyYUbvcxWqg";
+                    case 3 -> videoEmbedCode = "2UmbdX8iMqI";
+                }
+            }
+
+        }
+        youtubeEmbedView.getEngine().load("https://www.youtube.com/embed/" + videoEmbedCode);
     }
 
     public void startPractice() throws IOException {
