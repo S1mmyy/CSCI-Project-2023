@@ -12,18 +12,10 @@ public class DatabaseConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            //read database password from untracked file
-            URL fileUrl = getClass().getResource("/MinecraftMath/assets/dbpw.txt");
-            File txtFile = new File((fileUrl.getPath()));
-            Scanner sc = new Scanner(txtFile);
-
-            databaseLink = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com:3306/sql9616894", "sql9616894", sc.next());
+            databaseLink = DriverManager.getConnection("jdbc:mysql://sql9.freesqldatabase.com:3306/sql9616894", "sql9616894", "0wls");
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
             e.getCause();
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Can't login to database without password!");
         }
         return databaseLink;
     }
