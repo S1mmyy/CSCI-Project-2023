@@ -4,15 +4,15 @@ public class User {
     private String name;
     private int grade, avatarNum, questionSet;
 
-    private double[] gradeScores;
+    private double gradeScore;
     private double sectionPoints = 0.0;
 
-    public User(String newName, int newGrade, int newAvatarNum, int newQuestionSet, double[] newGradeScores) {
+    public User(String newName, int newGrade, int newAvatarNum, int newQuestionSet, double newGradeScore) {
         name = newName;
         grade = newGrade;
         avatarNum = newAvatarNum;
         questionSet = newQuestionSet;
-        gradeScores = newGradeScores;
+        gradeScore = newGradeScore;
     }
 
     public String getName() {
@@ -39,11 +39,11 @@ public class User {
     public int getQuestionSet() { return questionSet; }
     public void setQuestionSet(int questionSet) { this.questionSet = questionSet; }
 
-    public double[] getGradeScore() {
-        return gradeScores;
+    public double getGradeScore() {
+        return gradeScore;
     }
-    public void setGradeScore(double[] gradeScores) {
-        this.gradeScores = gradeScores;
+    public void setGradeScore(double gradeScore) {
+        this.gradeScore = gradeScore;
     }
 
     public void setSectionPoints(int sectionPoints) {

@@ -56,7 +56,7 @@ public class LoginPageController extends MasterController {
             scoresArray[i] = results.getDouble(i+5);
         }
 
-        userHolder.setUser(new User(results.getString(1), results.getInt(2), results.getInt(3), results.getInt(4), scoresArray));
+        userHolder.setUser(new User(results.getString(1), results.getInt(2), results.getInt(3), results.getInt(4), scoresArray[results.getInt(2)]));
         loadUserDataOntoScene();
         loginMessageLabel.setText("Welcome " + userHolder.getUser().getName() + "!");
         landingButton.setVisible(true);
