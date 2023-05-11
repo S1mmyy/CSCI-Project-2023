@@ -34,7 +34,7 @@
             <font>
                 <Font size="29.0" />
             </font></Label>
-        <Button fx:id="resultsButton" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="dev Results" />
+        <Button fx:id="resultsButton" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="dev Results" visible="false" />
         <Label layoutX="91.0" layoutY="109.0" prefHeight="58.0" prefWidth="179.0" style="-fx-font-family: Minecraft; -fx-font-size: 28;" text="Unit Test" textAlignment="CENTER" />
       <Label fx:id="gradeDisplay" layoutX="593.0" layoutY="24.0" text="Grade 1 Section 1" underline="true">
          <font>

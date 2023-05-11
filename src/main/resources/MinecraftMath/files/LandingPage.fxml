@@ -34,5 +34,5 @@
          </ImageView>
       </graphic>
    </Button>
-
+   <Label fx:id="gradeLabel" alignment="CENTER" layoutX="329.0" layoutY="505.0" prefHeight="30.0" prefWidth="365.0" style="-fx-font-family: Minecraft; -fx-font-size: 20; -fx-font-weight: Bold;" text="GRADE" textFill="AQUA" underline="true" />
 </AnchorPane>
