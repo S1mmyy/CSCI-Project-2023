@@ -20,20 +20,36 @@ public class ResultsController extends MasterController {
     private Button snakeButton;
     @FXML
     private ImageView eggImage;
+
+    private int newGrade = 0;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 
         loadUserDataOntoScene();
 
-        resultsText.setText("Results! \nYou received a total score of "+userHolder.getUser().getGradeScore()+"%");
+        if(userHolder.getUser().getQuestionSet() == 3){
+            newGrade = ((int) userHolder.getUser().getSectionPoints()/2);
 
-        if(userHolder.getUser().getGradeScore() > 85){
+        } else if (userHolder.getUser().getQuestionSet() == 4) {
+            newGrade = ((int) userHolder.getUser().getSectionPoints()/3);
+        }else{
+            newGrade = ((int) userHolder.getUser().getSectionPoints());
+        }
+
+
+        resultsText.setText("Results! \nYou received a \ntotal score of \n"+newGrade+"%");
+
+        if(newGrade > 80){
+
 
             snakeButton.setVisible(true);
             eggImage.setVisible(true);
 
         }
     }
+
+
 
     @FXML
     private Button landingButton;

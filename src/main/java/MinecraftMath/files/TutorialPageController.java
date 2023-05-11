@@ -61,7 +61,7 @@ public class TutorialPageController extends MasterController {
         Parent root;
 
         stage = (Stage) endTutButton.getScene().getWindow();
-        root = FXMLLoader.load(getClass().getResource("QuestionPage.fxml"));
+        root = FXMLLoader.load(getClass().getResource("RealQuiz.fxml"));
 
         stage.setScene(new Scene(root));
         stage.show();

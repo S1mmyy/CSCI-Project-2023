@@ -24,7 +24,7 @@ public class RealQuizController extends MasterController {
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         loadUserDataOntoScene();
-        questionList = 0;
+        questionList = -1;
         try {
             generateQuestion();
         } catch (IOException | SQLException e) {
@@ -63,6 +63,8 @@ public class RealQuizController extends MasterController {
 
         //TRUE OR FALSE QUESTION CHECKER
         if(!question.isMultipleChoice){
+            System.out.println(question.getIsTrue());
+
             if(question.getIsTrue().equals("True") && answerMenu.getText().equals("True") || question.getIsTrue().equals("False") && answerMenu.getText().equals("False")){
                 correctAnswerGiven();
             }else{
@@ -113,7 +115,11 @@ public class RealQuizController extends MasterController {
         resultLabel.setText("Correct!");
         resultLabel.setTextFill(Paint.valueOf("green"));
         answerMenu.setDisable(true);
-        userHolder.getUser().addSectionPoints();
+
+        if(questionList>0){
+            userHolder.getUser().addSectionPoints();
+        }
+
     }
     @FXML
     private void incorrectAnswerGiven()
@@ -134,9 +140,9 @@ public class RealQuizController extends MasterController {
         String updateUserScore = "";
 
         if(userHolder.getUser().getGrade() == 0){
-            updateUserScore = "UPDATE user_account SET grade_score_k = " + (Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+            updateUserScore = "UPDATE user_account SET grade_score_k = " + ((Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + userHolder.getUser().getGradeScore()) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         }else{
-            updateUserScore = "UPDATE user_account SET grade_score_"+userHolder.getUser().getGrade()+" = " + (Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+            updateUserScore = "UPDATE user_account SET grade_score_"+userHolder.getUser().getGrade()+" = " + ((Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + userHolder.getUser().getGradeScore()) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         }
 
 
@@ -173,9 +179,23 @@ public class RealQuizController extends MasterController {
     @FXML
     private Label questionBox;
     @FXML
+    private Label prac1;
+    @FXML
     public void generateQuestion() throws IOException, SQLException {
+
+        //LAST MINUTE CONDITION TO USE THE FIRST TEST QUESTION AS PRACTICE INSTEAD OF QUESTIONPAGECONTROLLER WHICH IS NOW UNUSED
+        if(questionList < 0){
+            prac1.setText("PRACTICE!");
+            questionListCount.setVisible(false);
+
+        }else{
+
+            prac1.setText("Unit Test");
+            questionListCount.setVisible(true);
+        }
+
         gradeDisplay.setText("Grade "+userHolder.getUser().getGrade()+" Section "+userHolder.getUser().getQuestionSet());
-        Arithmetic arm = new Arithmetic(userHolder.getUser().getGrade());
+        Arithmetic arm = new Arithmetic(userHolder.getUser().getGrade(),userHolder.getUser().getQuestionSet());
         questionList++;
         questionListCount.setText(questionList + " out of 10");
         if(questionList > 10){
@@ -195,18 +215,29 @@ public class RealQuizController extends MasterController {
         //RENAME QUESTION SET TO BE ACTUAL VALUE
         correctAnswer = arm.getAnswer();
         Random rightAns = new Random();
+        if(arm.getIsMultipleChoice()){
+            option3.setVisible(true);
+            option4.setVisible(true);
+            option1.setText(String.valueOf((arm.getAnswer()-1)));
+            option2.setText(String.valueOf((arm.getAnswer()+1)));
+            option3.setText(String.valueOf((arm.getAnswer()+2)));
+            option4.setText(String.valueOf((arm.getAnswer()-2)));
 
-        option1.setText(String.valueOf((arm.getAnswer()-1)));
-        option2.setText(String.valueOf((arm.getAnswer()+1)));
-        option3.setText(String.valueOf((arm.getAnswer()+2)));
-        option4.setText(String.valueOf((arm.getAnswer()-2)));
+            switch (rightAns.nextInt(4)) {
+                case 0 -> option1.setText(String.valueOf(arm.getAnswer()));
+                case 1 -> option2.setText(String.valueOf(arm.getAnswer()));
+                case 2 -> option3.setText(String.valueOf(arm.getAnswer()));
+                case 3 -> option4.setText(String.valueOf(arm.getAnswer()));
+            }
+        }else{
 
-        switch (rightAns.nextInt(4)) {
-            case 0 -> option1.setText(String.valueOf(arm.getAnswer()));
-            case 1 -> option2.setText(String.valueOf(arm.getAnswer()));
-            case 2 -> option3.setText(String.valueOf(arm.getAnswer()));
-            case 3 -> option4.setText(String.valueOf(arm.getAnswer()));
+            option1.setText("True");
+            option2.setText("False");
+            option3.setVisible(false);
+            option4.setVisible(false);
+
         }
+
 
 
 

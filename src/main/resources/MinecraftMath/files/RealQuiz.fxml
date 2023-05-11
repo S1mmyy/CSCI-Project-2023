@@ -34,18 +34,14 @@
             <font>
                 <Font size="29.0" />
             </font></Label>
-        <Button fx:id="resultsButton" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="dev Results" visible="false" />
-        <Label layoutX="91.0" layoutY="109.0" prefHeight="58.0" prefWidth="179.0" style="-fx-font-family: Minecraft; -fx-font-size: 28;" text="Unit Test" textAlignment="CENTER" />
-      <Label fx:id="gradeDisplay" layoutX="593.0" layoutY="24.0" text="Grade 1 Section 1" underline="true">
+        <Button fx:id="resultsButton" layoutX="106.0" layoutY="13.0" mnemonicParsing="false" onAction="#goResults" prefHeight="41.0" prefWidth="135.0" style="-fx-font-family: Minecraft; -fx-font-size: 13;" text="DEV BUTTON" />
+        <Label fx:id="prac1" layoutX="91.0" layoutY="109.0" prefHeight="58.0" prefWidth="179.0" style="-fx-font-family: Minecraft; -fx-font-size: 28;" text="Unit Test" textAlignment="CENTER" />
+      <Label fx:id="gradeDisplay" layoutX="593.0" layoutY="24.0" style="-fx-font-family: Minecraft; -fx-font-size: 14;" text="Grade 1 Section 1" underline="true">
          <font>
             <Font size="14.0" />
          </font></Label>
       <Button fx:id="questionGenerator" disable="true" layoutX="606.0" layoutY="343.0" mnemonicParsing="false" onAction="#generateQuestion" prefHeight="43.0" prefWidth="120.0" text="Next Question" />
       <ImageView fx:id="questionVisual" fitHeight="115.0" fitWidth="179.0" layoutX="225.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true" />
-      <Label fx:id="questionListCount" layoutX="73.0" layoutY="343.0" text="1 out of 10">
-         <font>
-            <Font size="19.0" />
-         </font></Label>
     </AnchorPane>
 
     <ImageView fx:id="avatarLoc" fitHeight="217.0" fitWidth="120.0" layoutX="350.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true" x="550.0" y="200.0" />
@@ -58,4 +54,9 @@
             </ImageView>
         </graphic>
     </Button>
+   <Label fx:id="questionListCount" layoutX="465.0" layoutY="520.0" style="-fx-font-family: Minecraft; -fx-font-size: 19;" text="1 out of 10" textFill="#00fff6">
+      <font>
+         <Font size="19.0" />
+      </font>
+   </Label>
 </AnchorPane>
