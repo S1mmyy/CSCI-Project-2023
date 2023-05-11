@@ -35,7 +35,7 @@ public class RealQuizController extends MasterController {
     private int correctAnswer = 49;
     private int submittedAnswer;
 
-    private double sectionPoints = 0.0;
+
 
     @FXML
     private Button submitButton;
@@ -113,7 +113,7 @@ public class RealQuizController extends MasterController {
         resultLabel.setText("Correct!");
         resultLabel.setTextFill(Paint.valueOf("green"));
         answerMenu.setDisable(true);
-        sectionPoints += 10;
+        userHolder.getUser().addSectionPoints();
     }
     @FXML
     private void incorrectAnswerGiven()
@@ -125,7 +125,7 @@ public class RealQuizController extends MasterController {
 
     @FXML
     public void goResults() throws IOException, SQLException {
-        System.out.println(sectionPoints); //MODIFY CODE TO INCLUDE THIS INTO THE DATABASE
+        System.out.println(userHolder.getUser().getSectionPoints());
 
         String updateUserSet = "UPDATE user_account SET question_set = " + (userHolder.getUser().getQuestionSet() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         String updateUserGrade = "UPDATE user_account SET grade = " + (userHolder.getUser().getGrade() + 1) + " WHERE name = '" + userHolder.getUser().getName() + "'";
@@ -134,9 +134,9 @@ public class RealQuizController extends MasterController {
         String updateUserScore = "";
 
         if(userHolder.getUser().getGrade() == 0){
-            updateUserScore = "UPDATE user_account SET grade_score_k = " + (Math.round((sectionPoints/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+            updateUserScore = "UPDATE user_account SET grade_score_k = " + (Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         }else{
-            updateUserScore = "UPDATE user_account SET grade_score_"+userHolder.getUser().getGrade()+" = " + (Math.round((sectionPoints/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
+            updateUserScore = "UPDATE user_account SET grade_score_"+userHolder.getUser().getGrade()+" = " + (Math.round((userHolder.getUser().getSectionPoints()/3) * 10.0) / 10.0) + " WHERE name = '" + userHolder.getUser().getName() + "'";
         }
 
 

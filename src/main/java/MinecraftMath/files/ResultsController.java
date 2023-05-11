@@ -18,6 +18,13 @@ public class ResultsController extends MasterController {
 
     @FXML
     private Button landingButton;
+    @FXML
+    private Button snakeButton;
+    @FXML
+    private void openSnake() throws Exception {
+        Snake snake = new Snake();
+        snake.openSnake();
+    }
 
     @FXML
     private void goLanding() throws Exception {
