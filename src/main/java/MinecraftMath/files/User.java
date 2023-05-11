@@ -3,6 +3,8 @@ package MinecraftMath.files;
 public class User {
     private String name;
     private int grade, avatarNum, questionSet;
+
+    private double sectionPoints = 0.0;
     private double gradeScore;
 
     public User(String newName, int newGrade, int newAvatarNum, int newQuestionSet, double newGradeScore) {
@@ -11,6 +13,7 @@ public class User {
         avatarNum = newAvatarNum;
         questionSet = newQuestionSet;
         gradeScore = newGradeScore;
+
     }
 
     public String getName() {
@@ -42,6 +45,17 @@ public class User {
     }
     public void setGradeScore(int gradeScore) {
         this.gradeScore = gradeScore;
+    }
+
+    public void setSectionPoints(int sectionPoints) {
+        this.sectionPoints = sectionPoints;
+    }
+
+    public double getSectionPoints() { return sectionPoints; }
+
+    public void addSectionPoints(){
+         sectionPoints = sectionPoints+10;
+
     }
 
     public void incQuestionSet() {
