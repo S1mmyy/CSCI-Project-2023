@@ -23,38 +23,97 @@ public class Arithmetic extends Question{
 
     static int p,q;
 
-    public Arithmetic(int grade)
+    public Arithmetic(int grade, int questionSet)
     {
 
-        if(grade==0)
+        if(grade==0  || grade ==1)
         {
-            a = ran.nextInt(21);
-            b = ran.nextInt(21);
-            operation = ops[0];
+            switch (questionSet) {
+
+                case 1:
+                    a = ran.nextInt(11);
+                    b = ran.nextInt(11);
+                    isMultipleChoice = true;
+                    operation = ops[0];
+                    break;
+                case 2:
+                    isMultipleChoice = true;
+                    a = ran.nextInt(21)+9;
+                    b = ran.nextInt(9);
+                    operation = ops[ran.nextInt(2)];
+                    break;
+                case 3:
+
+                    isMultipleChoice = false;
+                    //a = ran.nextInt(7);
+                    setAnswer(3);
+
+                    break;
+
+            }
 
         }
 
-        else if(grade == 1 || grade==2)
+        else if(grade == 2 || grade==3)
         {
-            a= ran.nextInt(21);
-            b= ran.nextInt(21);
-            operation = ops[2];
-        }
 
+            switch (questionSet) {
+
+                case 1:
+                    isMultipleChoice = true;
+                    a = ran.nextInt(101);
+                    b = ran.nextInt(101);
+                    operation = ops[0];
+                    break;
+                case 2:
+                    isMultipleChoice = true;
+                    a = ran.nextInt(21);
+                    b = ran.nextInt(21);
+                    operation = ops[2];
+                    break;
+                case 3:
+                    isMultipleChoice = false;
+
+                    setAnswer(6);
+                    break;
+            }
+        }
+/*
         else if(grade==3)
         {
             a=ran.nextInt(5001);
             b=ran.nextInt(5001);
             operation = ops[ran.nextInt(3)];
-        }
+        }*/
 
         else if(grade==4)
         {
-            p = ran.nextInt(202);
-            q = ran.nextInt(12);
-            a = p;
-            b = q;
-            operation = ops[ran.nextInt(4)];
+
+            switch (questionSet) {
+
+                case 1:
+                    isMultipleChoice = true;
+                    p = ran.nextInt(202);
+                    q = ran.nextInt(12);
+                    a = p;
+                    b = q;
+                    operation = ops[ran.nextInt(3)+1];
+                    break;
+                case 2:
+                    isMultipleChoice = false;
+                    p = ran.nextInt(202);
+                    q = ran.nextInt(12);
+                    a = p;
+                    b = q;
+                    operation = ops[ran.nextInt(3)+1];
+                    break;
+
+                case 3:
+                    isMultipleChoice = false;
+                    setAnswer(5);
+                    break;
+            }
+
         }
 
 
@@ -109,17 +168,26 @@ public class Arithmetic extends Question{
     public String getQuestion(int grade, int questionSet)
     {
 
-        String question = "ERROR DETECTED! Contact admin.";
+        String question = "Congrats! You did it all";
         if(grade == 0 || grade == 1){
             switch (questionSet) {
                 case 1:
                     question = "What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 2:
-                    question = "2What is " + a + " " + operation + " " + b + " equal to?";
+                    question = "What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 3:
-                    question = "3What is " + a + " " + operation + " " + b + " equal to?";
+                        if(ran.nextInt(4) == 1) {
+                            setAnswer(3);
+                            question = "Does a triangle have "+ answer +" sides?";
+                            isTrue = "True";
+
+                        }else {
+                            setAnswer(5);
+                            question = "Does a triangle have "+ (ran.nextInt(8)+4) +" sides?";
+                            isTrue = "False";
+                    }
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -130,13 +198,22 @@ public class Arithmetic extends Question{
 
             switch (questionSet) {
                 case 1:
-                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    question = "Steve has a grind of iron \nthat is " + a + operation + b + " blocks. \nHow many blocks does he \nhave in total?";
                     break;
                 case 2:
-                    question = "2Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    question = "Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
                     break;
                 case 3:
-                    question = "3Steve has a grind of iron \nthat is " + a + " by " + b + " blocks. \nHow many blocks does he \nhave in total?";
+                    if(ran.nextInt(4) == 1) {
+                        setAnswer(6);
+                        question = "Does a hexagon have "+ answer +" sides?";
+                        isTrue = "True";
+
+                    }else {
+                        setAnswer(4);
+                        question = "Does a hexagon have "+ (ran.nextInt(8)+6) +" sides?";
+                        isTrue = "False";
+                    }
                     break;
                 default:
                     System.out.println("Invalid choice");
@@ -149,11 +226,9 @@ public class Arithmetic extends Question{
                     question = "What is " + a + " " + operation + " " + b + " equal to?";
                     break;
                 case 2:
-                    question = "2What is " + a + " " + operation + " " + b + " equal to?";
-                    break;
-                case 3:
                     if(isMultipleChoice){
                         question = "What is " + a + " " + operation + " " + b + " equal to?";
+                      //  isMultipleChoice = false;
                     }
                     if (!isMultipleChoice){
                         if(ran.nextInt(2) == 1) {
@@ -165,6 +240,20 @@ public class Arithmetic extends Question{
                             question = "Is " + a + " " + operation + " " + incorr + " = " + answer + " ?";
                             isTrue = "False";
                         }
+                      //  isMultipleChoice = true;
+
+                    }
+                    break;
+                case 3:
+                    if(ran.nextInt(4) == 1) {
+                        setAnswer(5);
+                        question = "Does a pentagon have "+ answer +" sides?";
+                        isTrue = "True";
+
+                    }else {
+                        setAnswer(3);
+                        question = "Does a pentagon have "+ (ran.nextInt(8)+5) +" sides?";
+                        isTrue = "False";
                     }
                     break;
                 default:
