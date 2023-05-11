@@ -187,11 +187,12 @@ public class RealQuizController extends MasterController {
         if(questionList < 0){
             prac1.setText("PRACTICE!");
             questionListCount.setVisible(false);
-
+            questionGenerator.setText("Begin TEST");
         }else{
 
             prac1.setText("Unit Test");
             questionListCount.setVisible(true);
+            questionGenerator.setText("Next Question");
         }
 
         gradeDisplay.setText("Grade "+userHolder.getUser().getGrade()+" Section "+userHolder.getUser().getQuestionSet());
